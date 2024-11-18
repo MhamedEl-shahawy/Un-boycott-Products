@@ -2,7 +2,7 @@
 
 ## Description
 
-A Chrome browser extension that automatically filters out search results containing specific keywords related to boycott products. The extension works on Google and Bing search engines and updates results in real-time.
+A Chrome browser extension that automatically filters out search results containing specific keywords related to boycott products. The extension works on Google, yahoo , Bing , DuckDuckGo and Baidu search engines and updates results in real-time.
 
 ## Features
 
