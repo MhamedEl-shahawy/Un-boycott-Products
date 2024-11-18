@@ -1,0 +1,16 @@
+{
+  "manifest_version": 3,
+  "name": "Search Results Filter",
+  "version": "1.0",
+  "description": "Filters specific products from search results",
+  "permissions": [
+    "activeTab",
+    "storage"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["*://*.google.com/*", "*://*.bing.com/*"],
+      "js": ["content.js"]
+    }
+  ]
+} 
