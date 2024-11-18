@@ -16,12 +16,12 @@
         "*://*.duckduckgo.com/*",
         "*://*.baidu.com/*"
       ],
-      "js": ["content.js"],
+      "js": ["/content/content.js"],
       "run_at": "document_start"
     }
   ],
   "action": {
-    "default_popup": "popup.html"
+    "default_popup": "/popup/popup.html"
   },
-  "options_page": "options.html"
+  "options_page": "/options/options.html"
 } 

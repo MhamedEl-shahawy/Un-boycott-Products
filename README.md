@@ -6,11 +6,14 @@ A Chrome browser extension that automatically filters out search results contain
 
 ## Features
 
-- Automatically hides search results containing specified keywords
-- Works on Google and Bing search engines
-- Real-time filtering as new results load
-- Lightweight and easy to customize
-- No external dependencies
+## Features
+
+- 🚫 Filters boycotted products and brands
+- 🎯 Removes Google Ads and sponsored content
+- 🔍 Real-time filtering of search results
+- 📊 Shows filtering statistics
+- ⚡ Fast and lightweight
+- 🔄 Handles dynamic content loading
 
 ## Installation
 
@@ -39,20 +42,83 @@ A Chrome browser extension that automatically filters out search results contain
   3. Click the refresh icon on the extension
   4. Reload your search page
 
-## Development
+## Development Setup
 
-### Prerequisites
+1. **Prerequisites**
 
-- Google Chrome browser
-- Basic knowledge of JavaScript
-- Text editor (VS Code recommended)
+   ```bash
+   # Required tools
+   - Node.js (latest LTS)
+   - Chrome browser
+   - Text editor
+   ```
 
-### Making Changes
+2. **Project Structure**
 
-1. Modify the code as needed
-2. Save all changes
-3. Refresh the extension in Chrome
-4. Test the changes
+   ```
+   search-filter/
+   ├── manifest.json     # Extension config
+   ├── content/
+   │   ├── content.js    # Main filtering logic
+   │
+   ├── popup/
+   │   ├── popup.html    # Extension popup
+   │   └── popup.js      # Popup logic
+   ├── options/
+   │   ├── options.html  # Settings page
+   │   └── options.js    # Settings logic
+   └── assets/
+       └── icons/        # Extension icons
+   ```
+
+3. **Local Development**
+
+   ```bash
+   # Clone repository
+   git clone https://github.com/MhamedEl-shahawy/Un-boycott-Products.git
+   cd search-filter
+
+   # Install dependencies
+   npm install
+
+   # Watch for changes (optional)
+   npm run watch
+   ```
+
+4. **Testing**
+   ```bash
+   # Manual testing
+   1. Make code changes
+   2. Go to chrome://extensions
+   3. Click refresh icon on extension
+   4. Test on Google Search
+   ```
+
+## Updating
+
+1. **Manual Update**
+
+   - Download latest version
+   - Remove existing extension
+   - Follow installation steps
+   - Reconfigure settings
+
+2. **Automatic Updates**
+   - Chrome Web Store version updates automatically
+   - Local version requires manual update
+
+## Backup & Restore
+
+1. **Export Settings**
+
+   - Go to Options
+   - Click "Export Settings"
+   - Save JSON file
+
+2. **Import Settings**
+   - Go to Options
+   - Click "Import Settings"
+   - Select saved JSON file
 
 ## Contributing
 
@@ -76,4 +142,11 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## Support
 
-For support, please open an issue in the repository
+For support, please open an issue in the repository:
+
+1. Check [Issues](https://github.com/MhamedEl-shahawy/Un-boycott-Products/issues)
+2. Create new issue with:
+   - Chrome version
+   - Extension version
+   - Steps to reproduce
+   - Error messages
