@@ -1,3 +1,27 @@
+// Search engine configurations
+const searchEngines = {
+  google: {
+    hostname: "www.google.com",
+    resultSelectors: ["div.g", "div.hlcw0c"],
+  },
+  bing: {
+    hostname: "www.bing.com",
+    resultSelectors: [".b_algo"],
+  },
+  yahoo: {
+    hostname: "search.yahoo.com",
+    resultSelectors: ["div.algo", ".sr"],
+  },
+  duckduckgo: {
+    hostname: "duckduckgo.com",
+    resultSelectors: [".result"],
+  },
+  baidu: {
+    hostname: "www.baidu.com",
+    resultSelectors: [".result", ".c-container"],
+  },
+};
+
 // Initialize keywords array
 const filterKeywords = [
   "Nestlé",
@@ -41,7 +65,7 @@ function loadKeywords() {
     },
     (items) => {
       filterKeywords = items.filterKeywords;
-      filterResults(); // Re-run filtering with new keywords
+      filterResults();
     }
   );
 }
@@ -53,31 +77,34 @@ function containsFilteredKeywords(text) {
   );
 }
 
+// Get current search engine configuration
+function getCurrentSearchEngine() {
+  const hostname = window.location.hostname;
+  return Object.values(searchEngines).find((engine) =>
+    hostname.includes(engine.hostname)
+  );
+}
+
 // Function to remove elements containing filtered keywords
 function filterResults() {
-  // For Google Search
-  const searchResults = document.querySelectorAll("div.g");
-  searchResults.forEach((result) => {
-    const resultText = result.textContent || "";
-    if (containsFilteredKeywords(resultText)) {
-      result.style.display = "none";
-    }
-  });
+  const currentEngine = getCurrentSearchEngine();
+  if (!currentEngine) return;
 
-  // For Bing Search
-  const bingResults = document.querySelectorAll(".b_algo");
-  bingResults.forEach((result) => {
-    const resultText = result.textContent || "";
-    if (containsFilteredKeywords(resultText)) {
-      result.style.display = "none";
-    }
+  currentEngine.resultSelectors.forEach((selector) => {
+    const searchResults = document.querySelectorAll(selector);
+    searchResults.forEach((result) => {
+      const resultText = result.textContent || "";
+      if (containsFilteredKeywords(resultText)) {
+        result.style.display = "none";
+      }
+    });
   });
 }
 
-// Load keywords when content script runs
+// Initialize
 loadKeywords();
 
-// Listen for changes in storage
+// Listen for storage changes
 chrome.storage.onChanged.addListener((changes, namespace) => {
   if (namespace === "sync" && changes.filterKeywords) {
     filterKeywords = changes.filterKeywords.newValue;
@@ -85,7 +112,7 @@ chrome.storage.onChanged.addListener((changes, namespace) => {
   }
 });
 
-// Run filter when page content changes
+// Observer for dynamic content
 const observer = new MutationObserver(filterResults);
 observer.observe(document.body, {
   childList: true,
