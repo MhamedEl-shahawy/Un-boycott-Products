@@ -1,4 +1,4 @@
-# Search Results Filter - Chrome Extension
+# Search Results Filter - Un boycott Products
 
 ## Description
 
