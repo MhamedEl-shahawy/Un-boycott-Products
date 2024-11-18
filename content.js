@@ -1,9 +1,50 @@
-// List of keywords to filter
+// Initialize keywords array
 const filterKeywords = [
-  "boycott",
-  "boycotted products",
-  // Add more keywords as needed
+  "Nestlé",
+  "Nestle",
+  "Nestle products",
+  "Chick-fil-A",
+  "Chick-fil-A products",
+  "Nike",
+  "Nike products",
+  "Amazon",
+  "Amazon products",
+  "Walmart",
+  "Walmart products",
+  "Target",
+  "Target products",
+  "Coca-Cola",
+  "Coca-Cola products",
+  "Pepsi",
+  "Pepsi products",
+  "McDonald's",
+  "McDonald's products",
+  "Burger King",
+  "Burger King products",
+  "KFC",
+  "KFC products",
+  "British Petroleum",
+  "British Petroleum products",
+  "Exxon",
+  "Exxon products",
+  "Shell",
+  "Shell products",
+  "BP",
+  "BP products",
 ];
+
+// Load keywords from storage
+function loadKeywords() {
+  chrome.storage.sync.get(
+    {
+      filterKeywords: ["boycott", "boycotted products"],
+    },
+    (items) => {
+      filterKeywords = items.filterKeywords;
+      filterResults(); // Re-run filtering with new keywords
+    }
+  );
+}
 
 // Function to check if text contains filtered keywords
 function containsFilteredKeywords(text) {
@@ -33,10 +74,18 @@ function filterResults() {
   });
 }
 
-// Run filter when page loads
-filterResults();
+// Load keywords when content script runs
+loadKeywords();
 
-// Run filter when page content changes (for dynamic loading)
+// Listen for changes in storage
+chrome.storage.onChanged.addListener((changes, namespace) => {
+  if (namespace === "sync" && changes.filterKeywords) {
+    filterKeywords = changes.filterKeywords.newValue;
+    filterResults();
+  }
+});
+
+// Run filter when page content changes
 const observer = new MutationObserver(filterResults);
 observer.observe(document.body, {
   childList: true,
