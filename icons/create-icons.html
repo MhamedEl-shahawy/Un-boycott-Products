@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <canvas id="canvas"></canvas>
+    <script>
+      [16, 48, 128].forEach((size) => {
+        const canvas = document.createElement("canvas");
+        canvas.width = size;
+        canvas.height = size;
+        const ctx = canvas.getContext("2d");
+
+        // Draw a blue square
+        ctx.fillStyle = "#2196F3";
+        ctx.fillRect(0, 0, size, size);
+
+        // Save as PNG
+        const link = document.createElement("a");
+        link.download = `icon${size}.png`;
+        link.href = canvas.toDataURL();
+        link.click();
+      });
+    </script>
+  </body>
+</html>

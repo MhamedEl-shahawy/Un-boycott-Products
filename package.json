@@ -1,0 +1,15 @@
+{
+  "name": "Un-boycott-Products",
+  "version": "1.0.0",
+  "description": "A Chrome browser extension that automatically filters out search results containing specific keywords related to boycott products. The extension works on Google and Bing search engines and updates results in real-time.",
+  "main": "content.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Mohamed Elshahawy",
+  "license": "ISC",
+  "dependencies": {
+    "canvas": "^2.11.2"
+  }
+}
