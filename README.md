@@ -6,8 +6,6 @@ A Chrome browser extension that automatically filters out search results contain
 
 ## Features
 
-## Features
-
 - 🚫 Filters boycotted products and brands
 - 🎯 Removes Google Ads and sponsored content
 - 🔍 Real-time filtering of search results
@@ -24,8 +22,6 @@ A Chrome browser extension that automatically filters out search results contain
 5. Click "Load unpacked"
 6. Select the folder containing the extension files
 
-## Project Structure
-
 ## Usage
 
 1. After installation, the extension will automatically start working
@@ -41,8 +37,6 @@ A Chrome browser extension that automatically filters out search results contain
   2. Go to `chrome://extensions/`
   3. Click the refresh icon on the extension
   4. Reload your search page
-
-## Development Setup
 
 1. **Prerequisites**
 
@@ -76,7 +70,8 @@ A Chrome browser extension that automatically filters out search results contain
    ```bash
    # Clone repository
    git clone https://github.com/MhamedEl-shahawy/Un-boycott-Products.git
-   cd search-filter
+   cd Un-boycott-Products
+
 
    # Install dependencies
    npm install
@@ -138,7 +133,7 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## Version
 
-1.0.0
+1.3.0
 
 ## Support
 
