@@ -1,0 +1,20 @@
+ <svg width="128" height="128" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+    <!-- Solid Red Background -->
+    <circle cx="64" cy="64" r="60" 
+            fill="#FF0000" 
+            stroke="#FFFFFF"
+            stroke-width="4"/>
+
+    <!-- Bold FPB Text -->
+    <g transform="translate(64 75)">
+        <text x="0" y="0" 
+              fill="white" 
+              text-anchor="middle" 
+              font-family="Impact, Arial Black, sans-serif"
+              font-weight="900"
+              font-size="50"
+              letter-spacing="-2">
+             F P B
+        </text>
+    </g>
+</svg>

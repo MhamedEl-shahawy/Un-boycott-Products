@@ -1,4 +1,9 @@
-# Search Results Filter - Un boycott Products
+<div align="center">
+  <img src="assets/icons/icon128.png" alt="FPB Icon" width="128" height="128"/>
+
+# Filter Products Boycott (FPB)
+
+</div>
 
 ## Description
 
