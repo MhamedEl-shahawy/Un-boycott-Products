@@ -51,6 +51,8 @@
       "Heineken beer",
       "Heineken beers",
       "Heineken beer products",
+      "Heineken beer brands",
+      "heineken experience",
     ],
     selectors: {
       shopping: [
