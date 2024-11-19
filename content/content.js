@@ -1,4 +1,17 @@
 (function () {
+  // Add checks for various Google services
+  const excludedDomains = [
+    "mail.google.com",
+    "calendar.google.com",
+    "drive.google.com",
+    "docs.google.com",
+    "meet.google.com",
+  ];
+
+  if (excludedDomains.includes(window.location.hostname)) {
+    return; // Exit immediately if we're on any of these services
+  }
+
   // Configuration
   const CONFIG = {
     timeout: 5000, // 5 seconds maximum loading time
@@ -85,6 +98,8 @@
                 justify-content: center !important;
                 align-items: center !important;
                 font-family: Arial, sans-serif !important;
+                opacity: 1;
+                transition: opacity 0.3s ease;
             }
             .spinner {
                 border: 3px solid #f1f1f1 !important;
@@ -111,13 +126,15 @@
   // Add blocker to page
   document.documentElement.appendChild(blocker);
 
-  // Function to remove blocker
+  // Function to remove blocker - simplified and more aggressive
   function removeBlocker() {
-    const blocker = document.getElementById("search-filter-blocker");
-    if (blocker) {
-      blocker.style.opacity = "0";
-      blocker.style.transition = "opacity 0.3s ease";
-      setTimeout(() => blocker.remove(), 300);
+    try {
+      const blocker = document.getElementById("search-filter-blocker");
+      if (blocker) {
+        blocker.remove();
+      }
+    } catch (error) {
+      console.error("Error removing blocker:", error);
     }
   }
 
@@ -132,14 +149,15 @@
   // Main filter function
   async function filterContent() {
     try {
+      setTimeout(removeBlocker, 100); // Ensure removal after a brief delay
+
       // Check if search results exist
       const hasResults = document.querySelector(
         "div.g, div.hlcw0c, .commercial-unit-desktop-top"
       );
 
       if (!hasResults) {
-        updateMessage("Waiting for search results...");
-        setTimeout(removeBlocker, 1000);
+        removeBlocker();
         return;
       }
 
@@ -160,11 +178,13 @@
       }
 
       updateMessage(`Filtered ${filtered} items`);
-      setTimeout(removeBlocker, 500);
+      removeBlocker(); // Remove blocker after filtering
     } catch (error) {
       console.error("Filtering error:", error);
       updateMessage("Error occurred while filtering");
-      setTimeout(removeBlocker, 1000);
+      removeBlocker(); // Ensure blocker is removed even on error
+    } finally {
+      removeBlocker(); // Always try to remove blocker
     }
   }
 
@@ -181,13 +201,10 @@
     }
   }
 
-  // Set timeout to remove blocker
-  setTimeout(() => {
-    if (document.getElementById("search-filter-blocker")) {
-      updateMessage("Taking longer than expected...");
-      setTimeout(removeBlocker, 1000);
-    }
-  }, CONFIG.timeout);
+  // Set multiple failsafe timeouts
+  setTimeout(removeBlocker, 1000); // 1 second
+  setTimeout(removeBlocker, 2000); // 2 seconds
+  setTimeout(removeBlocker, CONFIG.timeout); // 5 seconds
 
   // Initialize MutationObserver
   function initializeObserver() {
