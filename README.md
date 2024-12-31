@@ -7,7 +7,7 @@ A Chrome browser extension that automatically filters out search results contain
 
 [![Product Hunt](https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=630393&theme=light)](https://www.producthunt.com/posts/un-boycott-products)
 
-[<img src="https://storage.googleapis.com/web-dev-uploads/image/WlD8wC6g8khYWPJUsQceQkhXSlv1/iNEddTyWiMfLSwFD6qGq.png" alt="Available in the Chrome Web Store" width="248" height="75">](https://chrome.google.com/webstore/detail/bbdpmdaghgkllnoigffabooljihkfghh)
+[![Chrome Web Store](https://img.shields.io/chrome-web-store/v/bbdpmdaghgkllnoigffabooljihkfghh)](https://chrome.google.com/webstore/detail/bbdpmdaghgkllnoigffabooljihkfghh)
 
 </div>
 

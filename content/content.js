@@ -75,8 +75,21 @@
         ".pla-unit",
         ".sh-dlr__list-result",
         ".mnr-c.pla-unit",
+        ".b_ad",
+        ".sb_add",
+        ".js-sponsored-results",
+        ".ads-ad",
       ],
-      organic: ["div.g", "div.hlcw0c", ".rc", ".yuRUbf", ".MjjYud"],
+      organic: [
+        "div.g",
+        "div.hlcw0c",
+        ".rc",
+        ".yuRUbf",
+        ".MjjYud",
+        ".b_algo",
+        ".result",
+        ".algo",
+      ],
     },
   };
 
